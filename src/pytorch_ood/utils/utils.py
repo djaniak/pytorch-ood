@@ -298,7 +298,8 @@ def extract_features(data_loader, model, device):
 
     with torch.no_grad():
         for batch in data_loader:
-            x, y = batch
+            (_, _, x), y = batch
+            # x, y = batch
             x = x.to(device)
             y = y.to(device)
             known = is_known(y)
