@@ -66,7 +66,7 @@ Entropy
 
 """
 from .energy import EnergyBased
-from .entropy import Entropy
+from .entropy import Entropy, LatentEntropy, LatentNegativeEntropy
 from .klmatching import KLMatching
 from .mahalanobis import Mahalanobis
 from .maxlogit import MaxLogit
