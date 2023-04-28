@@ -69,3 +69,76 @@ class Entropy(Detector):
         """
         p = logits.softmax(dim=1)
         return -(p.log() * p).sum(dim=1)
+
+
+class LatentEntropy(Detector):
+    """
+    Implements latent entropy-based OOD detection.
+
+    This methods calculates the entropy based on the entropy of a latent space distribution.
+    """
+
+    def fit(self: Self, *args, **kwargs) -> Self:
+        """
+        Not required.
+        """
+        return self
+
+    def fit_features(self: Self, *args, **kwargs) -> Self:
+        """
+        Not required.
+        """
+        return self
+
+    def __init__(self, model: nn.Module):
+        """
+        :param model: the model :math:`f`
+        """
+        super(LatentEntropy, self).__init__()
+        self.model = model
+
+    def predict(self, x: Tensor) -> Tensor:
+        """
+        Calculate entropy for inputs
+
+        :param x: input tensor, will be passed through model
+
+        :return: Entropy score
+        """
+        return self.model(x).entropy()
+
+class LatentNegativeEntropy(Detector):
+    """
+    Implements latent entropy-based OOD detection.
+
+    This methods calculates the entropy based on the entropy of a latent space distribution.
+    """
+
+    def fit(self: Self, *args, **kwargs) -> Self:
+        """
+        Not required.
+        """
+        return self
+
+    def fit_features(self: Self, *args, **kwargs) -> Self:
+        """
+        Not required.
+        """
+        return self
+
+    def __init__(self, model: nn.Module):
+        """
+        :param model: the model :math:`f`
+        """
+        super(LatentNegativeEntropy, self).__init__()
+        self.model = model
+
+    def predict(self, x: Tensor) -> Tensor:
+        """
+        Calculate entropy for inputs
+
+        :param x: input tensor, will be passed through model
+
+        :return: Entropy score
+        """
+        return -self.model(x).entropy()
