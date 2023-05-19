@@ -298,8 +298,10 @@ def extract_features(data_loader, model, device):
 
     with torch.no_grad():
         for batch in data_loader:
-            (_, _, x), y = batch
-            # x, y = batch
+            x, y = batch
+            if isinstance(x, list):  # get finetune view (first two elements are highly augmented)
+                (_, _, x) = x
+            assert isinstance(x, torch.Tensor)
             x = x.to(device)
             y = y.to(device)
             known = is_known(y)
