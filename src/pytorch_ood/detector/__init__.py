@@ -74,4 +74,5 @@ from .mcd import MCD
 from .odin import ODIN, odin_preprocessing
 from .openmax import OpenMax
 from .softmax import MaxSoftmax
+from .sigma import HSigmaMean, HSigmaStd, ZSigmaMean, ZSigmaStd
 from .vim import ViM
