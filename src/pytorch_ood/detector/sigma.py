@@ -1,3 +1,5 @@
+import torch
+
 from pytorch_ood.api import Detector
 
 
