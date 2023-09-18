@@ -32,7 +32,7 @@ class HSigmaStd(Detector):
     def predict(self, x: torch.Tensor) -> torch.Tensor:
         _, _, _, log_var, _ = self.model(x)
         sigma = torch.exp(0.5 * log_var)
-        return sigma.std(dim=1)
+        return -sigma.std(dim=1)
 
 
 class ZSigmaMean(Detector):
@@ -68,4 +68,4 @@ class ZSigmaStd(Detector):
         h = self.model(x)
         _, _, _, log_var, _ = self.model.project(h)
         sigma = torch.exp(0.5 * log_var)
-        return sigma.std(dim=1)
+        return -sigma.std(dim=1)
