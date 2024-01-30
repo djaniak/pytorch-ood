@@ -69,6 +69,7 @@ from .energy import EnergyBased
 from .entropy import Entropy, LatentEntropy, LatentNegativeEntropy
 from .klmatching import KLMatching
 from .mahalanobis import Mahalanobis
+from .mahalanobis_zero_shot import MahalanobisZeroShot
 from .maxlogit import MaxLogit
 from .mcd import MCD
 from .odin import ODIN, odin_preprocessing
